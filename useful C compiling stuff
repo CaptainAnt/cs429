@@ -1,0 +1,14 @@
+AWESOME GDB CODE!
+gcc -O0 -ggdb3 (filename) c -o (whatever)
+gdb (whatever)
+break (first breakpoint or funciton name)
+run (testfile)
+n to go to next line
+print (variable name or pointer) to look at variables
+
+GOOD DEBUGPRINT HEADER
+#if 1
+   #define debugPrint(a) printf a
+#else
+   #define debugPrint(a) (void)0
+#endif

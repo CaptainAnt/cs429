@@ -1,0 +1,270 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 69.81     37.95    37.95 336891050     0.00     0.00  Simulate_Reference_to_Cache_Line
+  6.72     41.61     3.65 66234017     0.00     0.00  read_reference
+  6.07     44.91     3.30 331170085     0.00     0.00  Simulate_Reference_to_Memory
+  5.30     47.79     2.88 620471601     0.00     0.00  ishex
+  2.91     49.37     1.58 1341843235     0.00     0.00  mask_of
+  2.15     50.54     1.17 554237584     0.00     0.00  hexvalue
+  1.66     51.44     0.90       10     0.09     0.09  which_power
+  1.53     52.27     0.83        1     0.83    54.10  Simulate_Caches
+  1.45     53.06     0.79 66234018     0.00     0.00  Read_trace_file_line
+  1.34     53.79     0.73 66234153     0.00     0.00  skip_blanks
+  0.33     53.97     0.18 67375777     0.00     0.00  Update_Replacement_Policy_Data
+  0.24     54.10     0.13 66248674     0.00     0.00  decvalue
+  0.18     54.21     0.10                             Set_Replacement_Policy_Data
+  0.13     54.28     0.07                             Replacement_policy
+  0.00     54.28     0.00       50     0.00     0.00  get_token
+  0.00     54.28     0.00       30     0.00     0.00  get_key_value_pair
+  0.00     54.28     0.00       25     0.00     0.00  define_key_value_pair
+  0.00     54.28     0.00       10     0.00     0.00  remember_string
+  0.00     54.28     0.00        6     0.00     0.00  Read_CDS_file_entry
+  0.00     54.28     0.00        5     0.00     0.00  Print_Cache_Statistics_for_one_cache
+  0.00     54.28     0.00        1     0.00     0.00  Delete_Caches
+  0.00     54.28     0.00        1     0.00     0.00  Init_Caches
+  0.00     54.28     0.00        1     0.00     0.90  Init_caches_for_trace
+  0.00     54.28     0.00        1     0.00     0.00  Print_Cache_Statistics
+  0.00     54.28     0.00        1     0.00     0.00  Read_Cache_Descriptions
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.02% of 54.28 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     99.7    0.00   54.10                 main [1]
+                0.83   53.27       1/1           Simulate_Caches [2]
+                0.00    0.00       1/1           Read_Cache_Descriptions [18]
+                0.00    0.00       1/1           Init_Caches [25]
+                0.00    0.00       1/1           Print_Cache_Statistics [26]
+                0.00    0.00       1/1           Delete_Caches [24]
+-----------------------------------------------
+                0.83   53.27       1/1           main [1]
+[2]     99.7    0.83   53.27       1         Simulate_Caches [2]
+                3.30   39.72 331170085/331170085     Simulate_Reference_to_Memory [3]
+                0.79    8.57 66234018/66234018     Read_trace_file_line [5]
+                0.00    0.90       1/1           Init_caches_for_trace [11]
+-----------------------------------------------
+                3.30   39.72 331170085/331170085     Simulate_Caches [2]
+[3]     79.3    3.30   39.72 331170085         Simulate_Reference_to_Memory [3]
+               37.95    0.79 336891050/336891050     Simulate_Reference_to_Cache_Line [4]
+                0.79    0.00 668061135/1341843235     mask_of [8]
+                0.18    0.00 67375777/67375777     Update_Replacement_Policy_Data [13]
+-----------------------------------------------
+               37.95    0.79 336891050/336891050     Simulate_Reference_to_Memory [3]
+[4]     71.4   37.95    0.79 336891050         Simulate_Reference_to_Cache_Line [4]
+                0.79    0.00 673782100/1341843235     mask_of [8]
+-----------------------------------------------
+                0.79    8.57 66234018/66234018     Simulate_Caches [2]
+[5]     17.2    0.79    8.57 66234018         Read_trace_file_line [5]
+                3.65    4.91 66234017/66234017     read_reference [6]
+-----------------------------------------------
+                3.65    4.91 66234017/66234017     Read_trace_file_line [5]
+[6]     15.8    3.65    4.91 66234017         read_reference [6]
+                2.88    0.00 620471601/620471601     ishex [7]
+                1.17    0.00 554237584/554237584     hexvalue [9]
+                0.73    0.00 66234017/66234153     skip_blanks [12]
+                0.13    0.00 66248674/66248674     decvalue [14]
+-----------------------------------------------
+                2.88    0.00 620471601/620471601     read_reference [6]
+[7]      5.3    2.88    0.00 620471601         ishex [7]
+-----------------------------------------------
+                0.79    0.00 668061135/1341843235     Simulate_Reference_to_Memory [3]
+                0.79    0.00 673782100/1341843235     Simulate_Reference_to_Cache_Line [4]
+[8]      2.9    1.58    0.00 1341843235         mask_of [8]
+-----------------------------------------------
+                1.17    0.00 554237584/554237584     read_reference [6]
+[9]      2.2    1.17    0.00 554237584         hexvalue [9]
+-----------------------------------------------
+                0.90    0.00      10/10          Init_caches_for_trace [11]
+[10]     1.7    0.90    0.00      10         which_power [10]
+-----------------------------------------------
+                0.00    0.90       1/1           Simulate_Caches [2]
+[11]     1.7    0.00    0.90       1         Init_caches_for_trace [11]
+                0.90    0.00      10/10          which_power [10]
+-----------------------------------------------
+                0.00    0.00       6/66234153     Read_CDS_file_entry [17]
+                0.00    0.00      50/66234153     get_token [20]
+                0.00    0.00      80/66234153     get_key_value_pair [19]
+                0.73    0.00 66234017/66234153     read_reference [6]
+[12]     1.3    0.73    0.00 66234153         skip_blanks [12]
+-----------------------------------------------
+                0.18    0.00 67375777/67375777     Simulate_Reference_to_Memory [3]
+[13]     0.3    0.18    0.00 67375777         Update_Replacement_Policy_Data [13]
+-----------------------------------------------
+                0.13    0.00 66248674/66248674     read_reference [6]
+[14]     0.2    0.13    0.00 66248674         decvalue [14]
+-----------------------------------------------
+                                                 <spontaneous>
+[15]     0.2    0.10    0.00                 Set_Replacement_Policy_Data [15]
+-----------------------------------------------
+                                                 <spontaneous>
+[16]     0.1    0.07    0.00                 Replacement_policy [16]
+-----------------------------------------------
+                0.00    0.00       6/6           Read_Cache_Descriptions [18]
+[17]     0.0    0.00    0.00       6         Read_CDS_file_entry [17]
+                0.00    0.00      30/30          get_key_value_pair [19]
+                0.00    0.00       6/66234153     skip_blanks [12]
+                0.00    0.00      25/25          define_key_value_pair [21]
+                0.00    0.00       5/10          remember_string [22]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[18]     0.0    0.00    0.00       1         Read_Cache_Descriptions [18]
+                0.00    0.00       6/6           Read_CDS_file_entry [17]
+-----------------------------------------------
+                0.00    0.00      30/30          Read_CDS_file_entry [17]
+[19]     0.0    0.00    0.00      30         get_key_value_pair [19]
+                0.00    0.00      80/66234153     skip_blanks [12]
+                0.00    0.00      50/50          get_token [20]
+-----------------------------------------------
+                0.00    0.00      50/50          get_key_value_pair [19]
+[20]     0.0    0.00    0.00      50         get_token [20]
+                0.00    0.00      50/66234153     skip_blanks [12]
+-----------------------------------------------
+                0.00    0.00      25/25          Read_CDS_file_entry [17]
+[21]     0.0    0.00    0.00      25         define_key_value_pair [21]
+                0.00    0.00       5/10          remember_string [22]
+-----------------------------------------------
+                0.00    0.00       5/10          define_key_value_pair [21]
+                0.00    0.00       5/10          Read_CDS_file_entry [17]
+[22]     0.0    0.00    0.00      10         remember_string [22]
+-----------------------------------------------
+                0.00    0.00       5/5           Print_Cache_Statistics [26]
+[23]     0.0    0.00    0.00       5         Print_Cache_Statistics_for_one_cache [23]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[24]     0.0    0.00    0.00       1         Delete_Caches [24]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[25]     0.0    0.00    0.00       1         Init_Caches [25]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[26]     0.0    0.00    0.00       1         Print_Cache_Statistics [26]
+                0.00    0.00       5/5           Print_Cache_Statistics_for_one_cache [23]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+  [24] Delete_Caches          [15] Set_Replacement_Policy_Data [9] hexvalue
+  [25] Init_Caches             [2] Simulate_Caches         [7] ishex
+  [11] Init_caches_for_trace   [4] Simulate_Reference_to_Cache_Line [8] mask_of
+  [26] Print_Cache_Statistics  [3] Simulate_Reference_to_Memory [6] read_reference
+  [23] Print_Cache_Statistics_for_one_cache [13] Update_Replacement_Policy_Data [22] remember_string
+  [17] Read_CDS_file_entry    [14] decvalue               [12] skip_blanks
+  [18] Read_Cache_Descriptions [21] define_key_value_pair [10] which_power
+   [5] Read_trace_file_line   [19] get_key_value_pair
+  [16] Replacement_policy     [20] get_token

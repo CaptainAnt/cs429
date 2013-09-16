@@ -1,0 +1,139 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+char* c;		   //character holder for instantiation;
+FILE* fp;		//file read variable
+char* w1;      //first word;
+char* w2;      //second word
+char* w3;
+
+typedef struct item{
+   char* val;
+   int count;
+   struct node* tail; 
+}item;
+
+typedef struct node{
+   struct item *value;
+   struct node *next;
+}node;
+
+char* getwrd(char* wr){
+	char* ret = (char*)malloc(100);
+   ret = strtok(wr," \n\t");
+   return ret;
+}
+
+node* ex(char* str,node* r);
+
+void testp(node* r);
+
+main(int arg1, char *arg2[]){
+   c = (char*)malloc(200);
+	while(--arg1 > 0){
+		fp = fopen(*++arg2, "r");}
+	struct node* root = (node*)malloc(sizeof(struct node));
+   	struct node* tail = (node*)malloc(sizeof(struct node));
+	root->value = (item*)malloc(sizeof(struct item));
+	root->next = NULL;
+   	tail = root;
+   
+   while (fgets(c, 100, fp) != NULL){
+      w1 = getwrd(c);
+      printf("assigned first word\n");
+      if(strcmp(ex(w1,root)->value->val,"") == 0){ //if the word doesn't exist already....
+         printf("got inside first if statement\n");
+         if(strcmp(root->value->val,"") == 0){ //if root doens't have a value
+            root->value->val = w1;
+            printf("added new node %s",w1);
+         }   
+         else{
+            struct node* new = (node*)malloc(sizeof(struct node));
+            new->value = (item*)malloc(sizeof(struct item));
+            new->next = NULL;
+            new->value->val = w1;
+            tail->next = new;
+            tail = new;
+            printf("no new node for %s",w1);
+         }
+      }
+      w2 = getwrd(c);
+      if(w2 == NULL){ //if there's no second word
+         printf("There is an error");
+         return;
+      }
+      if(strcmp(ex(w2,root)->value->val,"") == 0){ //if word doens't exist
+         struct node* new = (node*)malloc(sizeof(struct node));
+         new->value = (item*)malloc(sizeof(struct item));
+         new->next = NULL;
+         new->value->val = w2;
+         new->value->count = 1; 
+         tail->next = new;
+         struct node* cur = ex(w1,root);
+         struct node* fol = (node*)malloc(sizeof(struct node));
+         fol->value = (item*)malloc(sizeof(struct item));
+         if(cur->value->tail == NULL){
+            cur->value->tail = fol;
+            fol->next = NULL;
+            fol->value->val = w2;
+         }
+         else{
+            while(cur->value->tail->next != NULL)
+               cur->value->tail->next = cur->value->tail->next->next;
+            cur->value->tail->next = fol;
+            fol->next = NULL;
+            fol->value->val = w2;
+         }
+         tail = new;
+      }
+      else{ //if word already exists
+         struct node* cur = ex(w1,root);
+         struct node* fol = (node*)malloc(sizeof(struct node));
+         if(cur->value->tail == NULL){ //check to see if word is already under 1st word
+            cur->value->tail = fol;
+            fol->next = NULL;
+            fol->value->val = w2;
+         }
+         else{    //if not under first word
+            while(cur->value->tail->next != NULL)
+               cur->value->tail->next = cur->value->tail->next->next;
+            cur->value->tail->next = fol;
+            fol->next = NULL;
+            fol->value->val = w2;
+         }
+      }
+      w3 = getwrd(c);
+      if(w3!=NULL){  //if there's a third word
+         printf("There is an error");
+         return;
+      }
+   }
+   
+   testp(root);
+   
+}
+
+void testp(node* r){
+   while(r->next != NULL){
+      printf("%s\n",r->value->val);
+      r = r->next;
+   }
+}
+
+node* ex(char* str,node* r){
+   printf("EX called\n");
+   node* cur = r;
+   printf("EX node cur assigned to r\n");
+   while(cur->next!=NULL){
+      if(strcmp(cur->value->val,str) == 0)
+         return cur;
+      cur = cur->next;
+   }
+	printf("made it past while loop\n");
+   	truct node* temp = (node*)malloc(sizeof(struct node));
+	printf("malloc'd temp sized\n");
+   	temp->value->val = "";
+	printf("assigned temp node value\n");
+   return temp;
+}
